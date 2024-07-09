@@ -3,34 +3,43 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
-	public const float Speed = 300.0f;
-	public const float JumpVelocity = -400.0f;
+	[Export]
+	public float Speed { get; set; } = 100.0f;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
-	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+	[Export]
+	private static float Gravity { get; set; } = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+	private AnimatedSprite2D sprite { get; set; }
+
+	public override void _Process(double delta)
+	{
+		Movement(delta);
+	}
+
+	public override void _Ready()
+	{
+		sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		Vector2 velocity = Velocity;
 
-		// Add the gravity.
-		if (!IsOnFloor())
-			velocity.Y += gravity * (float)delta;
+	}
 
-		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-			velocity.Y = JumpVelocity;
+	public void Movement(double delta)
+	{
+		var input = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
+		var velocity = new Vector2(Velocity.X, Velocity.Y);
 
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		if (direction != Vector2.Zero)
+		if (input != 0)
 		{
-			velocity.X = direction.X * Speed;
+			velocity = new Vector2(input * Speed, velocity.Y);
+			velocity = new Vector2((float)Mathf.Clamp(Speed * delta, -Speed, Speed), velocity.Y);
+			sprite.FlipH = input < 0;
 		}
 		else
 		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			Velocity = new Vector2(0, Velocity.Y);
 		}
 
 		Velocity = velocity;

@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project-BTC-Phase-2", "Project-BTC-Phase-2.csproj", "{8ECD2B0A-0483-4331-8ECF-CD801E2E11F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project-BTC-Phase-2", "Project-BTC-Phase-2.csproj", "{00897937-1C3D-4730-9C57-D576AEC654CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,11 +9,11 @@ Global
 	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8ECD2B0A-0483-4331-8ECF-CD801E2E11F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8ECD2B0A-0483-4331-8ECF-CD801E2E11F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8ECD2B0A-0483-4331-8ECF-CD801E2E11F7}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
-		{8ECD2B0A-0483-4331-8ECF-CD801E2E11F7}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
-		{8ECD2B0A-0483-4331-8ECF-CD801E2E11F7}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
-		{8ECD2B0A-0483-4331-8ECF-CD801E2E11F7}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{00897937-1C3D-4730-9C57-D576AEC654CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00897937-1C3D-4730-9C57-D576AEC654CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00897937-1C3D-4730-9C57-D576AEC654CF}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{00897937-1C3D-4730-9C57-D576AEC654CF}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{00897937-1C3D-4730-9C57-D576AEC654CF}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{00897937-1C3D-4730-9C57-D576AEC654CF}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
 	EndGlobalSection
 EndGlobal
