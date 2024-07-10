@@ -10,10 +10,13 @@ public partial class Player : CharacterBody2D
 	[Export]
 	private static float Gravity { get; set; } = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	private AnimatedSprite2D sprite { get; set; }
+    private float velocityX { get; set; }
+	private float velocityY { get; set; }
 
-	public override void _Process(double delta)
+    public override void _Process(double delta)
 	{
 		Movement(delta);
+		
 	}
 
 	public override void _Ready()
@@ -28,21 +31,41 @@ public partial class Player : CharacterBody2D
 
 	public void Movement(double delta)
 	{
-		var input = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
-		var velocity = new Vector2(Velocity.X, Velocity.Y);
+		var input = Input.GetActionStrength("move_right") - Input.GetActionStrength("move_left");
+		velocityX = Velocity.X;
+		velocityY = Velocity.Y;
 
+		GD.Print(input);
 		if (input != 0)
 		{
-			velocity = new Vector2(input * Speed, velocity.Y);
-			velocity = new Vector2((float)Mathf.Clamp(Speed * delta, -Speed, Speed), velocity.Y);
-			sprite.FlipH = input < 0;
+			if (input > 0)
+			{
+				velocityX = Mathf.Lerp(velocityX, Speed, 0.1f); // Increase the interpolation factor for faster acceleration
+				velocityX = Mathf.Clamp(velocityX, -Speed, Speed);
+				sprite.FlipH = false;
+				sprite.Animation = "run";
+			}
+			else if (input < 0)
+			{
+				velocityX = Mathf.Lerp(velocityX, -Speed, 0.1f); // Increase the interpolation factor for faster acceleration
+				velocityX = Mathf.Clamp(velocityX, -Speed, Speed);
+				sprite.FlipH = true;
+				sprite.Animation = "run";
+			}
 		}
 		else
 		{
-			Velocity = new Vector2(0, Velocity.Y);
+			velocityX = 0;
+			sprite.Animation = "idle";
 		}
+		GravityForce(delta);
 
-		Velocity = velocity;
+		Velocity = new Vector2(velocityX, velocityY);
 		MoveAndSlide();
+	}
+
+	public void GravityForce(double delta) 
+	{
+		velocityY += Gravity * (float)delta;
 	}
 }

@@ -1,11 +1,61 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwx885mpuptcm"]
+[gd_scene load_steps=4 format=3 uid="uid://dwx885mpuptcm"]
 
 [ext_resource type="PackedScene" uid="uid://wdge1xp85tbs" path="res://Scenes/Player/Player.tscn" id="1_jjoeu"]
+[ext_resource type="Texture2D" uid="uid://byhwi08ru6dbh" path="res://Assets/assetpacks/DungeonPlatformerAssetPackV1.16/DungeonPlatformerAssetPackV1.16.png" id="2_hxc14"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jt4s4"]
+size = Vector2(40, 40)
 
 [node name="Level1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_jjoeu")]
-position = Vector2(0, -1)
+position = Vector2(0, -62)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(107, -91)
 zoom = Vector2(3, 3)
+
+[node name="ground" type="Node" parent="."]
+
+[node name="tempGround_1" type="StaticBody2D" parent="ground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ground/tempGround_1"]
+texture = ExtResource("2_hxc14")
+region_enabled = true
+region_rect = Rect2(152, 230, 40, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/tempGround_1"]
+shape = SubResource("RectangleShape2D_jt4s4")
+
+[node name="tempGround_2" type="StaticBody2D" parent="ground"]
+position = Vector2(40, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ground/tempGround_2"]
+texture = ExtResource("2_hxc14")
+region_enabled = true
+region_rect = Rect2(152, 230, 40, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/tempGround_2"]
+shape = SubResource("RectangleShape2D_jt4s4")
+
+[node name="tempGround_3" type="StaticBody2D" parent="ground"]
+position = Vector2(80, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ground/tempGround_3"]
+texture = ExtResource("2_hxc14")
+region_enabled = true
+region_rect = Rect2(152, 230, 40, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/tempGround_3"]
+shape = SubResource("RectangleShape2D_jt4s4")
+
+[node name="tempGround_4" type="StaticBody2D" parent="ground"]
+position = Vector2(120, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ground/tempGround_4"]
+texture = ExtResource("2_hxc14")
+region_enabled = true
+region_rect = Rect2(152, 230, 40, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/tempGround_4"]
+shape = SubResource("RectangleShape2D_jt4s4")
