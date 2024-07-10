@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://wdge1xp85tbs"]
+[gd_scene load_steps=110 format=3 uid="uid://wdge1xp85tbs"]
 
 [ext_resource type="Script" path="res://Scripts/Scenes/Player/Player.cs" id="1_kajoo"]
 [ext_resource type="Texture2D" uid="uid://bv88o04ahee8v" path="res://Assets/characters/Warrior-V1.3/Warrior/Individual Sprite/Attack/Warrior_Attack_1.png" id="2_evp4n"]
@@ -48,8 +48,11 @@
 [ext_resource type="Texture2D" uid="uid://w1h6ak5xevfw" path="res://Assets/characters/Warrior-V1.3/Warrior/Individual Sprite/Death-Effect/Warrior_Death_10.png" id="46_5c8o8"]
 [ext_resource type="Texture2D" uid="uid://bteuk61l70vkv" path="res://Assets/characters/Warrior-V1.3/Warrior/Individual Sprite/Death-Effect/Warrior_Death_11.png" id="47_pqib6"]
 [ext_resource type="Texture2D" uid="uid://fmdpibebx77b" path="res://Assets/characters/Warrior-V1.3/Warrior/Individual Sprite/EdgeGrab/Warrior_Edge-Grab_1.png" id="48_ohlia"]
+[ext_resource type="Texture2D" uid="uid://bco2s8rpxu2px" path="res://Assets/characters/Warrior-V1.3/Warrior/Individual Sprite/Fall/Warrior_Fall_1.png" id="48_pqncu"]
 [ext_resource type="Texture2D" uid="uid://brhdj3xx0s3f3" path="res://Assets/characters/Warrior-V1.3/Warrior/Individual Sprite/EdgeGrab/Warrior_Edge-Grab_2.png" id="49_1xppv"]
+[ext_resource type="Texture2D" uid="uid://430k6qn1qhw" path="res://Assets/characters/Warrior-V1.3/Warrior/Individual Sprite/Fall/Warrior_Fall_2.png" id="49_goebi"]
 [ext_resource type="Texture2D" uid="uid://cbrixrvqod8ri" path="res://Assets/characters/Warrior-V1.3/Warrior/Individual Sprite/EdgeGrab/Warrior_Edge-Grab_3.png" id="50_j2v0t"]
+[ext_resource type="Texture2D" uid="uid://c4yu6gfxg0bps" path="res://Assets/characters/Warrior-V1.3/Warrior/Individual Sprite/Fall/Warrior_Fall_3.png" id="50_koik7"]
 [ext_resource type="Texture2D" uid="uid://c22q0a8u1cbdb" path="res://Assets/characters/Warrior-V1.3/Warrior/Individual Sprite/EdgeGrab/Warrior_Edge-Grab_4.png" id="51_aayov"]
 [ext_resource type="Texture2D" uid="uid://bet4xsudmf4m8" path="res://Assets/characters/Warrior-V1.3/Warrior/Individual Sprite/EdgeGrab/Warrior_Edge-Grab_5.png" id="52_7kjbd"]
 [ext_resource type="Texture2D" uid="uid://yipp2elymbxb" path="res://Assets/characters/Warrior-V1.3/Warrior/Individual Sprite/idle/Warrior_Idle_1.png" id="53_3twvb"]
@@ -286,10 +289,19 @@ animations = [{
 "name": &"death",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("48_pqncu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_goebi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_koik7")
+}],
 "loop": true,
 "name": &"fall",
-"speed": 5.0
+"speed": 45.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -527,10 +539,8 @@ Speed = 200.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ovx0r")
-animation = &"run"
+animation = &"fall"
 autoplay = "idle"
-frame = 2
-frame_progress = 0.506316
 speed_scale = 0.333
 
 [node name="Sword" type="Area2D" parent="."]
@@ -543,3 +553,9 @@ debug_color = Color(0.792161, 0.288899, 0.789529, 0.42)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_7wq75")
+
+[node name="DebugLabel" type="Label" parent="."]
+offset_left = 12.0
+offset_top = -41.0
+offset_right = 52.0
+offset_bottom = -18.0
